@@ -1,0 +1,4 @@
+# inline script suelg_tech_advanced_survey
+area = physics
+category = { computing }
+ai_weight = {}

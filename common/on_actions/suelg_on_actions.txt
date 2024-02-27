@@ -1,0 +1,81 @@
+on_fleet_enter_orbit = {
+	events = {
+		suelg_advanced_survey.1
+	}
+}
+
+on_tech_increased = {
+	events = {
+		suelg_advanced_survey_tech.1 # Update scan level
+	}
+}
+
+# on_bi_yearly_pulse
+# on_five_year_pulse
+on_bi_yearly_pulse = {
+	events = {
+		suelg_auto_creator.3
+	}
+}
+
+# THIS = System: system being occupied
+# FROM = Country: Conqueror of the system
+# FROMFROM = Country: Original owner of the system
+on_system_occupied = {
+	events = {
+		suelg_advanced_survey.10
+	}
+}
+
+# From = system
+# FromFrom = country (new owner)
+# This = country (previous owner)
+on_system_lost = {
+	events = {
+		suelg_advanced_survey.11
+	}
+}
+
+# THIS = Ship (Starbase)
+# FROM = Former Owner (Country)
+on_starbase_transfer = {
+	events = {
+		suelg_advanced_survey.11
+	}
+}
+
+suelg_ship_complete_scan = {
+	events = {
+		suelg_advanced_survey_progress.4
+	}
+}
+
+on_megastructure_built = {
+	events = {
+		suelg_habitats.1
+	}
+}
+
+on_destroying_station = {
+	events = {
+		suelg_habitats.3
+	}
+}
+
+on_game_start = {
+	events = {
+		suelg_habitats.5 # rebuild deposits for habitats in capical star systems at the beginning of the game
+	}
+}
+
+on_single_player_save_game_load = {
+	events = {
+		suelg_habitats.6 # rebuild deposits for habitats in all systems in galaxy. Starts if the mod was loaded in the middle of the game
+	}
+}
+
+on_ship_order = {
+	events = {
+		suelg_restore_deposits.1
+	}
+}

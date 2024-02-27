@@ -1,0 +1,17 @@
+﻿l_russian:
+ suelg_caslvl:0 " уровень §YРасширенного исследования§! планет"
+
+ suelg_country_advanced_survey_lvl_1:0 "5$suelg_caslvl$"
+ suelg_country_advanced_survey_lvl_1_desc:0 "Уровень §YРасширенного исследования§! планет доступный в вашей стране.\n\nЧем выше уровень, тем большее количество раз можно обследовать каждую планету. Чтобы повысить уровень изучайте технологии §YРасширенного исследования§!. Максимальный уровень: §Y25§!."
+
+ suelg_country_advanced_survey_lvl_2:0 "10$suelg_caslvl$"
+ suelg_country_advanced_survey_lvl_2_desc:0 "$suelg_country_advanced_survey_lvl_1_desc$"
+
+ suelg_country_advanced_survey_lvl_3:0 "15$suelg_caslvl$"
+ suelg_country_advanced_survey_lvl_3_desc:0 "$suelg_country_advanced_survey_lvl_1_desc$"
+
+ suelg_country_advanced_survey_lvl_4:0 "20$suelg_caslvl$"
+ suelg_country_advanced_survey_lvl_4_desc:0 "$suelg_country_advanced_survey_lvl_1_desc$"
+
+ suelg_country_advanced_survey_lvl_5:0 "25$suelg_caslvl$"
+ suelg_country_advanced_survey_lvl_5_desc:0 "$suelg_country_advanced_survey_lvl_1_desc$"

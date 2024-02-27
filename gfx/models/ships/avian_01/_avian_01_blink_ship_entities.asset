@@ -1,0 +1,50 @@
+entity = {
+	name = "avian_01_blink_ship_entity"
+	pdxmesh = "avian_01_military_station_medium_mesh"	
+	default_state = "idle"
+	state = { name = "idle" state_time = 5
+		start_event = { trigger_once = yes sound = { soundeffect = "defense_station_idle_hum" } }
+	}
+	state = { name = "death" state_time = 2 looping = no
+		event = { time = 0.0 node = "explosion_1" particle = "ship_explosion_particle" keep_particle = yes trigger_once = yes sound = { soundeffect = "station_explosion_small" } }
+		event = { time = 0.5 node = "explosion_2" particle = "ship_explosion_particle" keep_particle = yes trigger_once = yes sound = { soundeffect = "station_explosion_small" } }
+		event = { time = 1.5 node = "explosion_3" particle = "ship_explosion_particle" keep_particle = yes trigger_once = yes sound = { soundeffect = "station_explosion_small" } }
+		
+		event = { time = 1.9 particle = "medium_station_explosion_particle" keep_particle = yes trigger_once = yes sound = { soundeffect = "station_explosion_large" } }
+	}
+	
+	locator = { name = "explosion_1" 		position = { 5.5 0 2 } }
+	locator = { name = "explosion_2" 		position = { -2 0 3 } }
+	locator = { name = "explosion_3" 		position = { -2.5 1.1 -5.5 } }	
+	
+	locator = { name = "root" 			position = { 0 0 0 } }
+	
+	cull_radius = 10
+	
+	game_data = {
+		size = 18
+	}
+	
+	scale = 1.5
+	locator = {
+		name = "root"
+		position = { 0 0 0 }
+	}
+}
+
+entity = {
+	name = "avian_01_blink_ship_section_entity"
+	pdxmesh = "molluscoid_01_corvette_frame_mesh"
+	
+	default_state = "idle"
+	state = { name = "idle"	 						animation = "idle" animation_blend_time = 0 }
+	
+	state = { name = "death" animation = "death3" 	animation_blend_time = 0.0 chance = 1 looping = no		
+	}
+	cull_radius = 10
+	locator = {
+		name = "root"
+		position = { -5 0 0 }
+	}
+	scale = 1.0
+}

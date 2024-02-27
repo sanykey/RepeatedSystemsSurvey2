@@ -1,0 +1,16 @@
+objectTypes = {
+	
+	pdxparticle = {
+		name = "isb_rag_fire_particle"
+		type = "isb_rag_fire_effect"
+		
+		scale = 5.0
+	}
+	
+	pdxparticle = {
+		name = "isb_rag_charge_particle"
+		type = "isb_rag_charge_effect"
+		
+		scale = 6.0
+	}
+}

@@ -1,0 +1,216 @@
+namespace = suelg_advanced_survey_progress
+
+# Calculate days for SP
+# this = Ship scope
+# fromfrom = Planet scope
+# from = Ship scope
+# SUELG_ADVANCED_SURVEY_SP_{x} on_start
+ship_event = {
+    id = suelg_advanced_survey_progress.1
+    hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		fromfrom = { save_event_target_as = t_planet }
+
+		suelg_calculate_actual_sp_days = yes
+
+		# log = ">> ON_START. BASE DAYS: [this.suelg_base_sp_days]"
+		# log = ">> ON_START. SURVEY SPEED: [this.suelg_survey_speed]"
+		# log = ">> ON_START. ACTUAL DAYS: [this.suelg_actual_sp_days]"
+
+		# sometimes the actual number of days for a project is so small that on_action on_progress_25 becomes irrelevant.
+		# 	Therefore, we run suelg_remain_or_complete_sp at an early stage, assuming that event suelg_advanced_survey_progress.2 will not be run
+		set_variable = { which = suelg_25progress_days value = suelg_base_sp_days }
+		multiply_variable = { which = suelg_25progress_days value = 0.25 }
+		if = {
+			limit = {
+				check_variable = { which = suelg_actual_sp_days value < suelg_25progress_days }
+			}
+			# log = ">> ON_START. SHORT START"
+			suelg_remain_or_complete_sp = yes
+		}
+
+		clear_variable = suelg_base_sp_days
+		clear_variable = suelg_survey_speed
+		clear_variable = suelg_25progress_days
+	} 
+}
+
+# Calculate days for SP (Alternative way. Often on_start does not work)
+# this = event scope (ship or planet)
+# fromfrom = project creation scope (usually equals location)
+#SUELG_ADVANCED_SURVEY_SP_{x} on_progress_25
+ship_event = {
+    id = suelg_advanced_survey_progress.2
+    hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		# log = ">> PROGRESS PROJECT. FROM: [from.GetName] THIS: [This.GetName] ROOT: [root.GetName] FROMFROM: [fromfrom.GetName]"
+		fromfrom = { save_event_target_as = t_planet }
+		owner = { save_event_target_as = t_owner }
+		save_event_target_as = t_ship
+
+		# In vanilla game, if the ship is far away from the project, often action on_start does not work,
+		#  respectively event suelg_advanced_survey_progress.1 will not work,
+		#  then recalculate the remaining days of the project (action on_progress_25 always works)
+		suelg_calculate_actual_sp_days = yes
+
+		# log = ">> ON_PROGRESS_25. BASE DAYS: [this.suelg_base_sp_days]"
+		# log = ">> ON_PROGRESS_25. SURVEY SPEED: [this.suelg_survey_speed]"
+		# log = ">> ON_PROGRESS_25. ACTUAL DAYS: [this.suelg_actual_sp_days]"
+
+		set_variable = { which = suelg_past_sp_days value = suelg_base_sp_days }
+		multiply_variable = { which = suelg_past_sp_days value = 0.25 }
+		subtract_variable  = { which = suelg_actual_sp_days value = suelg_past_sp_days }
+		# log = ">> ON_PROGRESS_25. PAST DAYS: [this.suelg_past_sp_days] REMAINING DAYS : [this.suelg_actual_sp_days]"
+
+		suelg_remain_or_complete_sp = yes
+	
+		clear_variable = suelg_base_sp_days
+		clear_variable = suelg_survey_speed
+	} 
+}
+
+# Check SP progress
+# this = ship
+# from = planet
+ship_event = {
+    id = suelg_advanced_survey_progress.3
+    hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		# log = ">> CHECK SP PROGRESS. BEFORE CHECK. FROM: [From.GetName]"
+		if = {
+			limit = {  is_variable_set = suelg_actual_sp_days }
+
+			save_event_target_as = t_ship
+			if = {
+				limit = { exists = leader }
+				leader = {
+					save_event_target_as = t_leader
+				}
+			}
+			from = {
+				save_event_target_as = t_planet
+			}
+			owner = {
+				save_event_target_as = t_owner
+			}
+
+			if = {
+				limit = { suelg_is_ship_researching_any_sp = yes }
+
+				suelg_subtract_actual_sp_days = yes
+				# log = ">> CHECK SP PROGRESS. DAYS: [this.suelg_actual_sp_days]. FROM: [From.GetName]"
+	
+				if = {
+					limit = {
+						OR = {
+							check_variable = { which = suelg_actual_sp_days value <= @suelg_sp_complete_remain_days }
+							# for debug:
+							event_target:t_owner = {
+								has_country_flag = suelg_debug_instant_project_completion
+							}
+						}
+					}
+					# log = ">> CHECK SP PROGRESS. FINISH [this.suelg_actual_sp_days]. FROM: [From.GetName]"
+					clear_variable = suelg_actual_sp_days
+					ship_event = {
+						id = suelg_advanced_survey_progress.4
+						days = 1
+						scopes = { from = event_target:t_planet }
+					} # Finish the project ahead of time because of the speed modifiers of the ship
+	
+				} else = {
+					# log = ">> CHECK SP PROGRESS. NEXT [this.suelg_actual_sp_days]. FROM: [From.GetName]"
+					suelg_remain_or_complete_sp = yes
+				}
+
+			}
+		}
+	} 
+}
+
+# Finish the scan ahead of time because of the speed modifiers of the ship
+ship_event = {
+	id = suelg_advanced_survey_progress.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# log = ">> TRY TO COMPLETE. FROM: [From.GetName]"
+
+		save_event_target_as = t_ship
+		if = {
+			limit = { exists = leader }
+			leader = {
+				save_event_target_as = t_leader
+			}
+		}
+
+		from = {
+			save_event_target_as = t_planet
+			solar_system = {
+				owner = {
+					save_event_target_as = t_owner
+				}
+			}
+			if = {
+				limit = { suelg_is_ship_researching_any_sp = yes }
+
+				# log = ">> TRY TO COMPLETE: ABORT AND RUN EFFECTS. FROM: [From.GetName]"
+				planet_event = { id = suelg_advanced_survey_progress.5 } # Abort completed project
+				planet_event = { id = suelg_advanced_survey.3 } # Run Complete project effects
+			}
+		}
+		clear_variable = suelg_actual_sp_days
+	}
+}
+
+# Abort completed project
+planet_event = {
+	id = suelg_advanced_survey_progress.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# log = ">> ABORT PROJECT. THIS: [This.GetName]"
+		solar_system = {
+			owner = {
+				suelg_abort_advanced_survey_SP = yes
+			}
+		}
+	} 
+}
+
+#this = Ship scope
+#fromfrom = Planet scope
+#from = Ship scope
+#suelg_advanced_survey_{X}_special_project on_success
+ship_event = {
+	id = suelg_advanced_survey_progress.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# log = ">> ON_SUCCESS. FROM: [from.GetName] FROMFROM: [fromfrom.GetName]"
+		save_event_target_as = t_ship
+
+		leader = {
+			save_event_target_as = t_leader
+			owner = {
+				save_event_target_as = t_owner
+			}
+
+			add_experience = -120 # remove vanilla experience from project
+		}
+
+		fromfrom = {
+			save_event_target_as = t_planet
+			planet_event = { id = suelg_advanced_survey.3 } # Run effects after complete project
+		}
+	}
+}

@@ -1,0 +1,184 @@
+namespace = suelg_habitats
+
+# on_megastructure_built
+# FROM = megastructure scope
+# FromFrom = System
+country_event = {
+	id = suelg_habitats.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			if = {
+				limit = {
+					OR = {
+						is_megastructure_type = major_orbital
+						is_megastructure_type = minor_orbital
+					}
+				}
+
+				planet = {
+					planet_event = { id = suelg_habitats.2 } # Create deposits in the Habitat that correspond to the deposits of this planet.
+				}
+			} else_if = {
+				limit = {
+					is_megastructure_type = habitat_central_complex
+				}
+
+				planet = {
+					# planet_event = { id = suelg_habitats.2 }
+					solar_system = {
+						# Do the same for all planets in the system.
+						suelg_fix_habitat_deps_in_system = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+# Create deposits in the Habitat that correspond to the deposits of this planet.
+planet_event = {
+	id = suelg_habitats.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		suelg_can_have_orbital_deposits = yes
+	}
+
+	immediate = {
+		suelg_get_habitat_and_orbital = yes
+
+		if = {
+			limit = { exists = event_target:t_habitat }
+			save_event_target_as = t_planet
+
+			suelg_calculate_deposits_if_need = yes
+			suelg_add_tracking_empty_deposit = yes
+			every_deposit = {
+				suelg_add_hab_deposit_fx = yes
+			}
+			remove_all_dep_action_flags = yes
+		}
+	}
+}
+
+# on_destroying_station
+# This = station
+# From = planet scope it was built on
+ship_event = {
+	id = suelg_habitats.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		suelg_is_orbital_station = yes
+	}
+
+	immediate = {
+		FROM = {
+			planet_event = { id = suelg_habitats.4 }
+		}
+	}
+}
+
+# When destroying the Habitat extension, find all deposits of the planet in the orbit
+#   of which the extension is located and delete all Habitat deposits that are associated
+#   with this planet and previously added by this mod.
+planet_event = {
+	id = suelg_habitats.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_get_habitat_and_orbital = yes
+
+		if = {
+			limit = { exists = event_target:t_habitat }
+
+			# Remove from a Habitat all deposits related to the deposits of this planet
+			every_deposit = {
+				suelg_delete_hab_deposit = yes
+			}
+
+			remove_all_dep_action_flags = yes
+		}
+	}
+}
+
+# on_game_start
+# rebuild deposits for habitats in capical star systems at the beginning of the game
+event = {
+	id = suelg_habitats.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = { exists = capital_scope }
+			capital_scope = {
+				solar_system = {
+					if = {
+						limit = { suelg_has_habitat_in_system = yes }
+						suelg_fix_habitat_deps_in_system = yes
+					}
+				}
+			}
+		}
+		set_global_flag = suelg_started
+	}
+}
+
+# on_single_player_save_game_load
+# rebuild deposits for habitats in all systems in galaxy. Starts if the mod was loaded in the middle of the game
+event = {
+	id = suelg_habitats.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = suelg_started }
+	}
+
+	immediate = {
+		every_system = {
+			limit = {
+				exists = owner
+				suelg_has_habitat_in_system = yes
+			}
+
+			suelg_fix_habitat_deps_in_system = yes
+		}
+		set_global_flag = suelg_started
+	}
+}
+
+# todo: fix or delete code?
+# rebuild deposits for an habitat in the star system in which the selected planet is located
+# for debug
+# system_event = {
+# 	id = suelg_habitats.6
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	immediate = {
+# 		solar_system = {
+# 			suelg_fix_habitat_deps_in_system = yes
+# 		}
+# 	}
+# }
+
+# rebuild deposits for all habitats in game 
+# event = {
+# 	id = suelg_habitats.7
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	immediate = {
+# 		every_system = {
+# 			limit = { suelg_has_habitat_in_system = yes }
+# 			suelg_fix_habitat_deps_in_system = yes
+# 		}
+# 	}
+# }

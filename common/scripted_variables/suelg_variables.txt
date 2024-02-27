@@ -1,0 +1,74 @@
+###########################
+##### Types and enums #####
+###########################
+@suelg_sizes_d_minerals = 10
+@suelg_sizes_d_energy = 10
+@suelg_sizes_d_trade_value = 10
+@suelg_sizes_d_physics = 10
+@suelg_sizes_d_society = 10
+@suelg_sizes_d_engineering = 10
+@suelg_sizes_d_alloys = 5
+@suelg_sizes_d_zro_deposit = 5
+@suelg_sizes_d_volatile_motes = 5
+@suelg_sizes_d_rare_crystals = 5
+@suelg_sizes_d_exotic_gases = 5
+@suelg_sizes_d_dark_matter_deposit = 3
+@suelg_sizes_d_artifacts_mining = 3
+@suelg_sizes_d_artifacts_research = 3
+
+####################################
+##### Advanced survey settings #####
+####################################
+@suelg_exp_per_day = 0.4
+@sueld_ship_speed_boost_days = 20
+@suelg_survey_speed_factor = 5 # 1 - default (off). Multiply the project research speed by this value for debugging. 
+
+#############################################
+##### Advanced survey leader experience #####
+#############################################
+@suelg_leader_exp_base = 100 # should be equal common/00_defines: LEADER_EXPERIENCE_REQUIREMENT_BASE_VALUE
+@suelg_leader_exp_scale = 300 # should be equal common/00_defines: LEADER_EXPERIENCE_REQUIREMENT_SCALE_VALUE
+@suelg_max_experience_factor = 0.07 # a experience gained factor from special projects relative to the experience required to gain a next leader level
+
+#########################
+##### Spawn chances	#####
+#########################
+
+# anomaly spawn chance:
+@suelg_spawn_anomaly_base_weight = 3 # 5 (5%) is vanilla chance
+@suelg_fail_spawn_anomaly_base_weight = 97 # 97 (95%) is vanilla chance
+
+# archelogy site spawn chance:
+@suelg_archelogy_spawn_base_weight = 1 # 0.1%
+@suelg_archelogy_fail_base_weight = 999
+
+############################################
+##### Advanced survey progress timings #####
+############################################
+@suelg_sp_check_days_1 = 400
+@suelg_sp_check_days_2 = 300
+@suelg_sp_check_days_3 = 175
+@suelg_sp_check_days_4 = 100
+@suelg_sp_check_days_5 = 50
+@suelg_sp_check_days_6 = 15
+@suelg_sp_check_days_7 = 6
+
+# is used when checking the number of days remaining for a special Advanced Survey project.
+# 	If there are less than the specified number of days left, the project can be terminated:
+@suelg_sp_complete_remain_days = 10
+
+####################################
+##### Other ########################
+####################################
+@suelg_notification_days = 30
+@suelg_debug_notification_days = 3
+@suelg_max_possible_advanced_survey_lvl = 25 # don't set more than 25
+@suelg_sp_max_distance = 25 # 25 - default
+@suelg_anomaly_max_distance = 25 # 25 - default
+
+##########################################
+##### restore deposits after anomaly #####
+##########################################
+@suelg_restore_deposits_after_days_1 = 3
+@suelg_restore_deposits_after_days_2 = 30
+@suelg_restore_deposits_after_days_3 = 90

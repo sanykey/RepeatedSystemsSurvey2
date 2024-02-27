@@ -1,0 +1,16 @@
+﻿l_russian:
+ suelg_tas:0 "Расширенное исследование планет "
+ suelg_tech_advanced_survey_1:0 "$suelg_tas$I"
+ suelg_tech_advanced_survey_1_desc:0 "Технология детального обследования планет для обнаружения новых ресурсов, аномалий, археологических раскопок.\n\nКаждый новый уровень этой технологии позволяет проводить 5 дополнительных обследований каждой планеты. Для того, чтобы начать проекты по исследованию планет в системе, выйдите научным кораблём с учёным на орбиту любой звезды."
+
+ suelg_tech_advanced_survey_2:0 "$suelg_tas$II"
+ suelg_tech_advanced_survey_2_desc:0 "$suelg_tech_advanced_survey_1_desc$"
+
+ suelg_tech_advanced_survey_3:0 "$suelg_tas$III"
+ suelg_tech_advanced_survey_3_desc:0 "$suelg_tech_advanced_survey_1_desc$"
+
+ suelg_tech_advanced_survey_4:0 "$suelg_tas$IV"
+ suelg_tech_advanced_survey_4_desc:0 "$suelg_tech_advanced_survey_1_desc$"
+
+ suelg_tech_advanced_survey_5:0 "$suelg_tas$V"
+ suelg_tech_advanced_survey_5_desc:0 "$suelg_tech_advanced_survey_1_desc$"

@@ -1,0 +1,10 @@
+# suelg_ef_add_exp_for_leader inline script
+
+if = {
+	limit = {
+		check_variable = { which = suelg_started_advanced_survey_lvl value = $LVL$ }
+	}
+
+	set_variable = { which = suelg_leader_exp value = @SUELG_ADVANCED_SURVEY_SP_days_$LVL$ }
+	multiply_variable = { which = suelg_leader_exp value = @suelg_exp_per_day }
+}

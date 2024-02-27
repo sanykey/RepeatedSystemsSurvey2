@@ -1,0 +1,415 @@
+namespace = suelg_spawn_resource
+
+# Calculate the chance for an orbital deposit to spawn 
+planet_event = {
+    id = suelg_spawn_resource.1
+    hide_window = yes
+    is_triggered_only = yes
+
+	trigger = {
+		suelg_can_have_orbital_deposits = yes
+	}
+
+	immediate = {
+		# log = ">> CHECK DEPOSIT. FROM: [from.GetName] THIS: [This.GetName] ROOT: [root.GetName] FROMFROM: [fromfrom.GetName]"
+
+		suelg_calculate_deposits_if_need = yes
+		suelg_calculate_archeology_factor = yes
+
+		random_list = {
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "minerals" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_3 F = 1.15 }
+
+				# log = ">> SPAWN minerals. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.2 } # Spawn mineral deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "energy" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_3 F = 1.15 }
+
+				# log = ">> SPAWN energy. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.3 } # Spawn energy deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "trade" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_prospector_3 F = 1.15 }
+
+				# log = ">> SPAWN trade. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.4 } # Spawn trade deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "alloys" }
+
+				# log = ">> SPAWN alloy. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.5 } # Spawn alloy deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "zro" }
+
+				# log = ">> SPAWN zro. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.6 } # Spawn zro deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "dark_matter" }
+
+				# log = ">> SPAWN dark_matter. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.7 } # Spawn dark_matter deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "physics" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_3 F = 1.15 }
+
+				# log = ">> SPAWN physics. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.8 } # Spawn physics deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "society" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_3 F = 1.15 }
+
+				# log = ">> SPAWN society. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.9 } # Spawn society deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "engineering" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant F = 1.05 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_2 F = 1.10 }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_observant_3 F = 1.15 }
+
+				# log = ">> SPAWN engineering. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.10 } # Spawn engineering deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "volatile_motes" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_midas_touch F = 1.10 }
+
+				# log = ">> SPAWN volatile_motes. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.11 } # Spawn volatile_motes deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "rare_crystals" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_midas_touch F = 1.10 }
+
+				# log = ">> SPAWN rare_crystals. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.12 } # Spawn rare_crystals deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "exotic_gases" }
+				inline_script = { script = suelg_add_mfactor_btrait T = leader_trait_midas_touch F = 1.10 }
+
+				# log = ">> SPAWN exotic_gases. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.13 } # Spawn exotic_gases deposit
+			}
+			0 = {
+				inline_script = { script = spawn_deposits/suelg_can_spawn_mbase D = "artifacts" }
+				modifier = {
+					factor = this.suelg_archeology_ch_mod # var from `suelg_calculate_archeology_factor`
+				}
+
+				# log = ">> SPAWN artifacts. THIS: [This.GetName]"
+				planet_event = { id = suelg_spawn_resource.14 } # Spawn artifacts deposit
+			}
+			0 = {
+				modifier = { add = @suelg_orbital_deposit_fail_base_weight }
+				inline_script = { script = suelg_add_mfactor_btrait T = subclass_scientist_explorer F = @suelg_explorer_deposit_spawn_factor }
+
+				# The higher the level of Advanced survey project, there are more chances for spawn deposit
+				modifier = { factor = value:suelg_advanced_survey_lvl_factor }
+
+				# for debug
+				modifier = {
+					factor = 0
+					event_target:t_owner = {
+						has_country_flag = suelg_guaranteed_deposits_spawn
+					}
+				}
+
+				# log = ">> fail spawn. THIS: [This.GetName]"
+			}
+		}
+
+		clear_variable = suelg_archeology_ch_mod # clear var after `suelg_calculate_archeology_factor`
+	}
+}
+
+# Spawn mineral deposit
+planet_event = {
+	id = suelg_spawn_resource.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_minerals }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 10
+			HAB_DEP_TYPE = d_hab_minerals
+			FLAG_TYPE = mining
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_basic_dep_message = { TYPE = d_minerals }
+	}
+}
+
+# Spawn energy deposit
+planet_event = {
+	id = suelg_spawn_resource.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_energy }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 10
+			HAB_DEP_TYPE = d_hab_energy
+			FLAG_TYPE = energy
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_basic_dep_message = { TYPE = d_energy }
+	}
+}
+
+# Spawn trade deposit
+planet_event = {
+	id = suelg_spawn_resource.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		while = { 
+			count = 3
+			suelg_add_deposit = { D = d_trade_value }
+		}
+		suelg_new_basic_dep_message = { TYPE = d_trade_value }
+	}
+}
+
+# Spawn alloy deposit
+planet_event = {
+	id = suelg_spawn_resource.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_alloys }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 5
+			HAB_DEP_TYPE = d_hab_alloy
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_alloys }
+	}
+}
+
+# Spawn zro deposit
+planet_event = {
+	id = suelg_spawn_resource.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_zro_deposit }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 5
+			HAB_DEP_TYPE = d_hab_zro
+			FLAG_TYPE = science
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_zro_deposit }
+	}
+}
+
+# Spawn dark_matter deposit
+planet_event = {
+	id = suelg_spawn_resource.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_dark_matter_deposit }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 3
+			HAB_DEP_TYPE = d_hab_dark_matter
+			FLAG_TYPE = science
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_dark_matter_deposit }
+	}
+}
+
+# Spawn physics deposit
+planet_event = {
+	id = suelg_spawn_resource.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_physics }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 10
+			HAB_DEP_TYPE = d_hab_physics
+			FLAG_TYPE = science
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_science_dep_message = { TYPE = d_physics }
+	}
+}
+
+# Spawn society deposit
+planet_event = {
+	id = suelg_spawn_resource.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_society }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 10
+			HAB_DEP_TYPE = d_hab_society
+			FLAG_TYPE = science
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_science_dep_message = { TYPE = d_society }
+	}
+}
+
+# Spawn engineering deposit
+planet_event = {
+	id = suelg_spawn_resource.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_engineering }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 10
+			HAB_DEP_TYPE = d_hab_engineering
+			FLAG_TYPE = science
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_science_dep_message = { TYPE = d_engineering }
+	}
+}
+
+# Spawn volatile_motes deposit
+planet_event = {
+	id = suelg_spawn_resource.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_volatile_motes }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 5
+			HAB_DEP_TYPE = d_hab_mote
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_volatile_motes }
+	}
+}
+
+# Spawn rare_crystals deposit
+planet_event = {
+	id = suelg_spawn_resource.12
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_rare_crystals }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 5
+			HAB_DEP_TYPE = d_hab_crystal
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_rare_crystals }
+	}
+}
+
+# Spawn exotic_gases deposit
+planet_event = {
+	id = suelg_spawn_resource.13
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		suelg_add_deposit = { D = d_exotic_gases }
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 5
+			HAB_DEP_TYPE = d_hab_gas
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_exotic_gases }
+	}
+}
+
+# Spawn artifacts deposit
+planet_event = {
+	id = suelg_spawn_resource.14
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { has_deposit_for = shipclass_mining_station }
+			suelg_add_deposit = { D = d_artifacts_mining }
+		} else_if = {
+			limit = { has_deposit_for = shipclass_research_station }
+			suelg_add_deposit = { D = d_artifacts_research }
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_toxic # not sure
+					is_planet_class = pc_frozen # not sure
+					# I doubt archaeological sites can appear on stars, but just in case.
+					is_planet_class = pc_a_star
+					is_planet_class = pc_b_star
+					is_planet_class = pc_f_star
+					is_planet_class = pc_g_star
+					is_planet_class = pc_k_star
+					is_planet_class = pc_m_star
+					is_planet_class = pc_m_giant_star
+					is_planet_class = pc_t_star
+					is_planet_class = pc_neutron_star
+					is_planet_class = pc_pulsar
+					is_planet_class = pc_black_hole
+				}
+			}
+			suelg_add_deposit = { D = d_artifacts_research }
+		} else = {
+			suelg_add_deposit = { D = d_artifacts_mining }
+		}
+
+		suelg_add_habitat_deposit_and_flag = {
+			MAX_DEP_LVL = 3
+			HAB_DEP_TYPE = d_hab_artifacts
+			ALWAYS_ADD = yes
+		}
+
+		suelg_new_rare_dep_message = { TYPE = d_artifacts }
+	}
+}

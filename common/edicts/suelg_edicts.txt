@@ -1,0 +1,60 @@
+suelg_clear_projects = {
+	icon = "GFX_edict_type_time"
+	resources = {
+		category = edicts
+	}
+
+	potential = {
+		suelg_can_survey = yes
+	}
+			
+	effect = {hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = suelg_clear_project_started }
+			}
+			country_event = { id = suelg_advanced_survey.12 }
+		}
+	}}
+
+	allow = {
+		NOT = {
+			has_country_flag = suelg_clear_project_started
+		}
+	}
+
+	ai_weight = {
+		weight = 0	
+	}	
+}
+
+suelg_disallow_auto_survey = {
+	icon = "GFX_edict_type_time"
+	resources = {
+		category = edicts
+	}
+
+	potential = {
+		suelg_can_survey = yes
+	}
+
+	ai_weight = {
+		weight = 0	
+	}	
+}
+
+suelg_dont_create_projects = {
+	icon = "GFX_edict_type_time"
+	resources = {
+		category = edicts
+	}
+
+	potential = {
+		suelg_can_survey = yes
+		always = no # todo fix
+	}
+
+	ai_weight = {
+		weight = 0	
+	}	
+}

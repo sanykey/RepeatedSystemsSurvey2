@@ -1,0 +1,42 @@
+namespace = suelg_spawn_archeology
+
+# Calculate the chance for an Archaeological site and spawn
+planet_event = {
+    id = suelg_spawn_archeology.1
+    hide_window = yes
+    is_triggered_only = yes
+
+	immediate = {
+		suelg_calculate_archeology_factor = yes
+
+		random_list = {
+			0 = {
+				modifier = {
+					add = @suelg_archelogy_spawn_base_weight
+				}
+				modifier = {
+					factor = this.suelg_archeology_ch_mod
+				}
+
+				planet_event = { id = suelg_spawn_archeology.2 } # Spawn archaeological site
+			}
+			0 = {
+				modifier = {
+					add = @suelg_archelogy_fail_base_weight
+				}
+			}
+		}
+		clear_variable = suelg_archeology_ch_mod
+	}
+}
+
+# Spawn archaeological site
+planet_event = {
+	id = suelg_spawn_archeology.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		create_archaeological_site = random
+	}
+}

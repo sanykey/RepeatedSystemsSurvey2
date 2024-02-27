@@ -1,0 +1,8 @@
+# inline script suelg_add_mfactor_btrait
+modifier = {
+	factor = $F$
+	exists = event_target:t_leader
+	event_target:t_leader = {
+		has_trait = $T$
+	}
+}
