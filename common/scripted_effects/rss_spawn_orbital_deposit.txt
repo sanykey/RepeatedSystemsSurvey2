@@ -33,14 +33,3 @@ rss_add_deposit_3 = {
 	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 2 NEXT_LVL = 3 }
 	else = { add_deposit = $DTYPE$_1 }
 }
-
-rss_decrement_potential_deposit = {
-	if = {
-		limit = {
-			is_variable_set = rss_potential_$DTYPE$
-			check_variable = { which = rss_potential_$DTYPE$ value > 0 }
-		}
-		change_variable = { which = rss_potential_$DTYPE$ value = -1 }
-	}
-}
-

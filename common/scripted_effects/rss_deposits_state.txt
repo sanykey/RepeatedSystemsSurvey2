@@ -37,4 +37,12 @@ rss_increment_deposit_state = {
 	} else = {
 		set_variable = { which = rss_numof_$DTYPE$ value = 1 }
 	}
+	if = {
+		limit = {
+			is_variable_set = rss_numof_d_all
+		}
+		change_variable = { which = rss_numof_d_all value = 1 }
+	} else = {
+		set_variable = { which = rss_numof_d_all value = 1 }
+	}
 }

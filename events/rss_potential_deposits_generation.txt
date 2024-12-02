@@ -36,6 +36,8 @@ planet_event = {
 			which = debug_planet_size
 			value = trigger:planet_size
 		}
+		planet_event = { id = rss_potential_deposits_generation.3 }
+		planet_event = { id = rss_deposits_state.1 } # calculate current planet deposits
 
 		while = {
 			count = value:rss_available_numof_potential_deposits

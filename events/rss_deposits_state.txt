@@ -1,6 +1,6 @@
 namespace = rss_deposits_state
 
-# calculate deposits
+# calculate current planet deposits
 planet_event = {
 	id = rss_deposits_state.1
 	hide_window = yes

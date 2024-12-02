@@ -1,0 +1,22 @@
+
+rss_decrement_potential_deposit = {
+	if = {
+		limit = {
+			is_variable_set = rss_potential_$DTYPE$
+		}
+
+		if = {
+			limit = {
+				check_variable = { which = rss_potential_$DTYPE$ value > 0 }
+			}
+			change_variable = { which = rss_potential_$DTYPE$ value = -1 }
+		}
+
+		if = {
+			limit = {
+				check_variable = { which = rss_potential_$DTYPE$ value < 1 }
+			}
+			clear_variable = rss_potential_$DTYPE$
+		}
+	}
+}
