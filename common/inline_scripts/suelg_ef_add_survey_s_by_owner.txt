@@ -1,6 +1,0 @@
-# suelg_ef_add_survey_s_by_owner inline script
-if = {
-    limit = { owner = { $T$ = $N$ } }
-    change_variable = { which = suelg_survey_speed value = $F$ }
-		# log = ">> +SurveySpeed BY OWNER: [This.suelg_survey_speed], $T$ = $N$, MOD: $F$, THIS: [This.GetName]"
-}

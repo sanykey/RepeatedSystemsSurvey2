@@ -1,0 +1,10 @@
+# rss/potential_deposits/add inline script
+
+if = {
+	limit = {
+		is_variable_set = rss_potential_$DTYPE$
+	}
+	change_variable = { which = rss_potential_$DTYPE$ value = 1 }
+} else = {
+	set_variable = { which = rss_potential_$DTYPE$ value = 1 }
+}

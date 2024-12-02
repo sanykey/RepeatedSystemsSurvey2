@@ -1,0 +1,141 @@
+namespace = rss_potential_deposits_generation
+
+# on_fleet_enter_orbit
+# From = Planet/Starbase/Megastructure scope
+# This = Fleet scope
+fleet_event = {
+	id = rss_potential_deposits_generation.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		can_orbit_fleet_survey_planet = yes
+	}
+
+	immediate = {
+		From = {
+			planet_event = { id = rss_potential_deposits_generation.2 }
+		}
+	}
+}
+
+# Generate a pool of potential orbital deposits
+planet_event = {
+	id = rss_potential_deposits_generation.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		rss_can_have_orbital_deposits = yes
+	}
+
+	immediate = {
+		save_event_target_as = t_planet
+
+		set_variable = {
+			which = debug_planet_size
+			value = trigger:planet_size
+		}
+
+		while = {
+			count = value:rss_available_numof_potential_deposits
+			random_list = {
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_minerals" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_minerals" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_energy" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_energy" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_trade_value" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_trade_value" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_alloys" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_alloys" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_zro" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_zro" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_dark_matter" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_dark_matter" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_physics" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_physics" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_society" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_society" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_engineering" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_engineering" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_volatile_motes" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_volatile_motes" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_rare_crystals" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_rare_crystals" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_exotic_gases" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_exotic_gases" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_exotic_gases" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_exotic_gases" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "d_artifacts" }
+					modifier = {
+						factor = 0
+						rss_has_mining_deposit = no
+						rss_has_research_deposit = no
+					}
+
+					inline_script = { script = rss/potential_deposits/add DTYPE = "d_artifacts" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "archelogy" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "archelogy" }
+				}
+				0 = {
+					inline_script = { script = rss/potential_deposits/chance DTYPE = "anomaly" }
+					inline_script = { script = rss/potential_deposits/add DTYPE = "anomaly" }
+				}
+			}
+		}
+	}
+}
+
+# remove all potential deposits
+planet_event = {
+	id = rss_potential_deposits_generation.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clear_variable = rss_potential_d_minerals
+		clear_variable = rss_potential_d_energy
+		clear_variable = rss_potential_d_trade_value
+		clear_variable = rss_potential_d_alloys
+		clear_variable = rss_potential_d_zro
+		clear_variable = rss_potential_d_dark_matter
+		clear_variable = rss_potential_d_physics
+		clear_variable = rss_potential_d_society
+		clear_variable = rss_potential_d_engineering
+		clear_variable = rss_potential_d_volatile_motes
+		clear_variable = rss_potential_d_rare_crystals
+		clear_variable = rss_potential_d_exotic_gases
+		clear_variable = rss_potential_d_artifacts
+		clear_variable = rss_potential_archelogy
+		clear_variable = rss_potential_anomaly
+	}
+}

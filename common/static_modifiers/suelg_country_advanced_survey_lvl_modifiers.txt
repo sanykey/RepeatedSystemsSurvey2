@@ -1,5 +1,0 @@
-suelg_country_advanced_survey_lvl_1 = { icon = GFX_suelg_country_advanced_survey }
-suelg_country_advanced_survey_lvl_2 = { icon = GFX_suelg_country_advanced_survey }
-suelg_country_advanced_survey_lvl_3 = { icon = GFX_suelg_country_advanced_survey }
-suelg_country_advanced_survey_lvl_4 = { icon = GFX_suelg_country_advanced_survey }
-suelg_country_advanced_survey_lvl_5 = { icon = GFX_suelg_country_advanced_survey }

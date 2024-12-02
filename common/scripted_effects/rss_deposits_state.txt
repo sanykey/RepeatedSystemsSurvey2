@@ -1,0 +1,40 @@
+rss_calculate_deposit_10 = {
+  inline_script = rss/start_if
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 1 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 2 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 3 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 4 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 5 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 6 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 7 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 8 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 9 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 10 DTYPE = $DTYPE$ }
+}
+
+rss_calculate_deposit_5 = {
+  inline_script = rss/start_if
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 1 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 2 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 3 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 4 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 5 DTYPE = $DTYPE$ }
+} 
+
+rss_calculate_deposit_3 = {
+  inline_script = rss/start_if
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 1 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 2 DTYPE = $DTYPE$ }
+  inline_script = { script = rss/deposits_state/calculate_deposit LVL = 3 DTYPE = $DTYPE$ }
+}
+
+rss_increment_deposit_state = {
+	if = {
+		limit = {
+			is_variable_set = rss_numof_$DTYPE$
+		}
+		change_variable = { which = rss_numof_$DTYPE$ value = 1 }
+	} else = {
+		set_variable = { which = rss_numof_$DTYPE$ value = 1 }
+	}
+}

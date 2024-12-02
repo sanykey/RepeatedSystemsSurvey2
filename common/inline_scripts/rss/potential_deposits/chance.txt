@@ -1,0 +1,5 @@
+# rss/potential_deposits/chance inline script
+modifier = {
+	add = @rss_potential_weight_$DTYPE$ # see file: "scripted_variables/rss_potential_deposit_chance_weights"
+	rss_can_spawn_$DTYPE$ = yes
+}

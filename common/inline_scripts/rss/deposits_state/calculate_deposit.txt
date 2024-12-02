@@ -1,0 +1,16 @@
+# rss/deposits_state/calculate_deposit inline script
+else_if = { # Scope = deposit
+	limit = { is_deposit_type = $DTYPE$_$LVL$ }
+	Prev = { # Scope = planet
+		if = { 
+			limit =  {
+				NOT = { is_variable_set = rss_numof_$DTYPE$ }
+			}
+			set_variable = { which = rss_numof_$DTYPE$ value = $LVL$ }
+			change_variable = { which = rss_numof_d_all value = $LVL$ }
+		} else = {
+			change_variable = { which = rss_numof_$DTYPE$ value = $LVL$ }
+			change_variable = { which = rss_numof_d_all value = $LVL$ }
+		}
+	}
+}

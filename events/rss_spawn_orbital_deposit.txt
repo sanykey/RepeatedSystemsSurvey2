@@ -1,0 +1,181 @@
+namespace = rss_spawn_orbital_deposit
+
+# Spawn mineral deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_minerals }
+		rss_increment_deposit_state = { DTYPE = d_minerals }
+		rss_decrement_potential_deposit = { DTYPE = d_minerals }
+	}
+}
+
+# Spawn energy deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_energy }
+		rss_increment_deposit_state = { DTYPE = d_energy }
+		rss_decrement_potential_deposit = { DTYPE = d_energy }
+	}
+}
+
+# Spawn trade deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_trade_value }
+		rss_increment_deposit_state = { DTYPE = d_trade_value }
+		rss_decrement_potential_deposit = { DTYPE = d_trade_value }
+	}
+}
+
+# Spawn alloys deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_alloys }
+		rss_increment_deposit_state = { DTYPE = d_alloys }
+		rss_decrement_potential_deposit = { DTYPE = d_alloys }
+	}
+}
+
+# Spawn zro deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_zro_deposit }
+		rss_increment_deposit_state = { DTYPE = d_zro }
+		rss_decrement_potential_deposit = { DTYPE = d_zro }
+	}
+}
+
+# Spawn dark_matter deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_dark_matter_deposit }
+		rss_increment_deposit_state = { DTYPE = d_dark_matter }
+		rss_decrement_potential_deposit = { DTYPE = d_dark_matter }
+	}
+}
+
+# Spawn physics deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_physics }
+		rss_increment_deposit_state = { DTYPE = d_physics }
+		rss_decrement_potential_deposit = { DTYPE = d_physics }
+	}
+}
+
+# Spawn society deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_society }
+		rss_increment_deposit_state = { DTYPE = d_society }
+		rss_decrement_potential_deposit = { DTYPE = d_society }
+	}
+}
+
+# Spawn engineering deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_engineering }
+		rss_increment_deposit_state = { DTYPE = d_engineering }
+		rss_decrement_potential_deposit = { DTYPE = d_engineering }
+	}
+}
+
+# Spawn volatile_motes deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_volatile_motes }
+		rss_increment_deposit_state = { DTYPE = d_volatile_motes }
+		rss_decrement_potential_deposit = { DTYPE = d_volatile_motes }
+	}
+}
+
+# Spawn rare_crystals deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_rare_crystals }
+		rss_increment_deposit_state = { DTYPE = d_rare_crystals }
+		rss_decrement_potential_deposit = { DTYPE = d_rare_crystals }
+	}
+}
+
+# Spawn exotic_gases deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.12
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		rss_add_deposit = { DTYPE = d_exotic_gases }
+		rss_increment_deposit_state = { DTYPE = d_exotic_gases }
+		rss_decrement_potential_deposit = { DTYPE = d_exotic_gases }
+	}
+}
+
+# Spawn artifacts deposit
+planet_event = {
+	id = rss_spawn_orbital_deposit.13
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				rss_has_mining_deposit = yes
+			}
+			rss_add_deposit = { DTYPE = d_artifacts_mining }
+		} else_if = {
+			limit = {
+				rss_has_research_deposit = yes
+			}
+			rss_add_deposit = { DTYPE = d_artifacts_research }
+		}
+
+		rss_increment_deposit_state = { DTYPE = d_artifacts }
+		rss_decrement_potential_deposit = { DTYPE = d_artifacts }
+	}
+}

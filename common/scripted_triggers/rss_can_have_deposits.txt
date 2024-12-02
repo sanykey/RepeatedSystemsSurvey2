@@ -1,0 +1,70 @@
+rss_can_have_volatile_motes_deposits = {
+	# it's a vanilla trigger, for some reason written in the singular, although other similar ones are written in the plural form
+	can_have_volatile_motes_deposit = yes
+}
+
+rss_can_have_alloy_deposits = {
+	is_planet_class = pc_asteroid
+	is_planet_class = pc_molten
+}
+
+rss_can_have_zro_deposits = {
+	is_planet_class = pc_toxic
+}
+
+rss_can_have_dark_matter_deposits = {
+	is_planet_class = pc_black_hole
+}
+
+rss_can_have_planet_deposits = {
+	OR = {
+		can_have_habitable_deposits = yes
+
+		is_planet_class = "pc_desert"
+		is_planet_class = "pc_savannah"
+		is_planet_class = "pc_arid"
+	
+		is_planet_class = "pc_tropical"
+		is_planet_class = "pc_continental"
+		is_planet_class = "pc_ocean"
+	
+		is_planet_class = "pc_tundra"
+		is_planet_class = "pc_arctic"
+		is_planet_class = "pc_alpine"
+	
+		is_planet_class = "pc_gaia"
+		is_planet_class = "pc_city"
+		is_planet_class = "pc_hive"
+		is_planet_class = "pc_machine"
+		is_planet_class = "pc_relic"
+		is_planet_class = "pc_ai"
+		is_planet_class = "pc_nuked"
+		# is_planet_class = "pc_barren"
+	}
+}
+
+rss_can_have_orbital_deposits = {
+	rss_can_have_planet_deposits = no
+}
+
+rss_can_have_mining_deposits = {
+	rss_has_trade_deposits = no
+	rss_has_potential_trade_deposit = no
+	rss_has_potential_research_deposit = no
+	rss_has_research_deposit = no
+}
+
+rss_can_have_research_deposits = {
+	rss_has_trade_deposits = no
+	rss_has_potential_mining_deposit = no
+	rss_has_potential_trade_deposit = no
+	rss_has_mining_deposit = no
+}
+
+rss_can_have_trade_type = {
+	rss_has_potential_mining_deposit = no
+	rss_has_potential_research_deposit = no
+	rss_has_research_deposit = no
+	rss_has_mining_deposit = no
+}
+

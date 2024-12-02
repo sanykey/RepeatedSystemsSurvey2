@@ -1,0 +1,55 @@
+namespace = rss_deposits_state
+
+# calculate deposits
+planet_event = {
+	id = rss_deposits_state.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		planet_event = { id = rss_deposits_state.2 }
+		set_variable = { which = rss_numof_d_all value = 0 }
+		
+		every_deposit = {
+			rss_calculate_deposit_10 = { DTYPE = d_minerals }
+			rss_calculate_deposit_10 = { DTYPE = d_energy }
+			rss_calculate_deposit_10 = { DTYPE = d_trade_value }
+			rss_calculate_deposit_10 = { DTYPE = d_physics }
+			rss_calculate_deposit_10 = { DTYPE = d_society }
+			rss_calculate_deposit_10 = { DTYPE = d_engineering }
+			rss_calculate_deposit_5 = { DTYPE = d_exotic_gases }
+			rss_calculate_deposit_5 = { DTYPE = d_rare_crystals }
+			rss_calculate_deposit_5 = { DTYPE = d_volatile_motes }
+			rss_calculate_deposit_5 = { DTYPE = d_alloys }
+			rss_calculate_deposit_5 = { DTYPE = d_zro_deposit }
+			rss_calculate_deposit_3 = { DTYPE = d_dark_matter_deposit }
+			rss_calculate_deposit_3 = { DTYPE = d_artifacts_mining }
+			rss_calculate_deposit_3 = { DTYPE = d_artifacts_research }
+		}
+	}
+}
+
+# clear deposits calculation
+planet_event = {
+	id = rss_deposits_state.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clear_variable = rss_numof_d_all
+		clear_variable = rss_numof_d_minerals
+		clear_variable = rss_numof_d_energy
+		clear_variable = rss_numof_d_trade_value
+		clear_variable = rss_numof_d_physics
+		clear_variable = rss_numof_d_society
+		clear_variable = rss_numof_d_engineering
+		clear_variable = rss_numof_d_exotic_gases
+		clear_variable = rss_numof_d_rare_crystals
+		clear_variable = rss_numof_d_volatile_motes
+		clear_variable = rss_numof_d_alloys
+		clear_variable = rss_numof_d_zro_deposit
+		clear_variable = rss_numof_d_dark_matter_deposit
+		clear_variable = rss_numof_d_artifacts_mining
+		clear_variable = rss_numof_d_artifacts_research
+	}
+}

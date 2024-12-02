@@ -1,0 +1,5 @@
+on_fleet_enter_orbit = {
+	events = {
+		rss_potential_deposits_generation.1 # trigger -> Generate a pool of potential orbital deposits
+	}
+}

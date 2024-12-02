@@ -1,0 +1,6 @@
+ambient_object = {
+	name = "rss_survey_icon_object"
+	entity = "sensor_station_01_entity"
+	selectable = no
+	show_name = no
+}

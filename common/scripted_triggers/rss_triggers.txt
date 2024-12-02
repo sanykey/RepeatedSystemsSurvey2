@@ -1,0 +1,12 @@
+# on_fleet_enter_orbit
+can_orbit_fleet_survey_planet = {
+	This = {
+		exists = leader
+		leader = {
+			leader_class = scientist
+		}
+	}
+	From = {
+		is_scope_type = planet
+	}
+}

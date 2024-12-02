@@ -1,0 +1,6 @@
+# rss/spawn_orbital_deposit/add inline script
+else_if = {
+	limit = {	has_deposit = $DTYPE$_$LVL$ }
+	remove_deposit = $DTYPE$_$LVL$
+	add_deposit = $DTYPE$_$NEXT_LVL$
+}

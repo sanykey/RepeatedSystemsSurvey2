@@ -1,0 +1,63 @@
+namespace = rss_dev
+
+# create_ambient_object test
+event = {
+	id = rss_dev.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				is_scope_type = planet
+			}
+			create_ambient_object = {
+				location = this
+				type = rss_survey_icon_object
+				duration = 60
+	
+				use_3d_location= yes
+	
+				entity_offset = { min = 0 max = 0 }
+				entity_offset_angle = { min = 0 max = 0 }
+				entity_offset_height = { min = 0 max = 0 }
+	
+				entity_scale_to_size = no
+				scale = 2
+			}
+		}
+	}
+}
+
+planet_event = {
+	id = rss_dev.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				rss_has_potential_archelogy_site = yes
+			}
+			log = "RESULT: 2. rss_has_potential_archelogy_site"
+			set_planet_flag = rss_has_potential_archelogy_site
+		}
+	}
+}
+
+planet_event = {
+	id = rss_dev.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = t_planet
+		if = {
+			limit = {
+				rss_has_archelogy_site = yes
+			}
+			log = "RESULT: 3. rss_has_archelogy_site"
+			set_planet_flag = rss_has_archelogy_site
+		}
+	}
+}

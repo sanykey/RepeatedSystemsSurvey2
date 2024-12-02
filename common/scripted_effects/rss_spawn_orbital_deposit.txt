@@ -1,0 +1,46 @@
+rss_add_deposit_ws = { rss_add_deposit_$MAX_SIZE$ = { DTYPE = $DTYPE$ } }
+
+rss_add_deposit = {
+	rss_add_deposit_ws = { DTYPE = $DTYPE$ MAX_SIZE = @rss_max_deposit_size_$DTYPE$ }
+}
+
+rss_add_deposit_10 = {
+	inline_script = rss/start_if
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 1 NEXT_LVL = 2 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 2 NEXT_LVL = 3 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 3 NEXT_LVL = 4 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 4 NEXT_LVL = 5 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 5 NEXT_LVL = 6 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 6 NEXT_LVL = 7 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 7 NEXT_LVL = 8 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 8 NEXT_LVL = 9 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 9 NEXT_LVL = 10 }
+	else = { add_deposit = $DTYPE$_1 }
+}
+
+rss_add_deposit_5 = {
+	inline_script = rss/start_if
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 1 NEXT_LVL = 2 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 2 NEXT_LVL = 3 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 3 NEXT_LVL = 4 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 4 NEXT_LVL = 5 }
+	else = { add_deposit = $DTYPE$_1 }
+}
+
+rss_add_deposit_3 = {
+	inline_script = rss/start_if
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 1 NEXT_LVL = 2 }
+	inline_script = { script = rss/spawn_orbital_deposit/add DTYPE = $DTYPE$ LVL = 2 NEXT_LVL = 3 }
+	else = { add_deposit = $DTYPE$_1 }
+}
+
+rss_decrement_potential_deposit = {
+	if = {
+		limit = {
+			is_variable_set = rss_potential_$DTYPE$
+			check_variable = { which = rss_potential_$DTYPE$ value > 0 }
+		}
+		change_variable = { which = rss_potential_$DTYPE$ value = -1 }
+	}
+}
+

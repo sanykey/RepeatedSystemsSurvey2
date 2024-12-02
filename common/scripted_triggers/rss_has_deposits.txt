@@ -1,0 +1,71 @@
+rss_has_archelogy_site = {
+	any_archaeological_site = {
+		planet = {
+			is_same_value = event_target:t_planet
+		}
+	}
+}
+
+rss_has_potential_archelogy_site = {
+	is_variable_set = rss_potential_archelogy
+	check_variable = {
+		which = rss_potential_archelogy
+		value > 0
+	}
+}
+
+rss_has_potential_anomaly = {
+	is_variable_set = rss_potential_anomaly
+	check_variable = {
+		which = rss_potential_anomaly
+		value > 0
+	}
+}
+
+rss_has_potential_trade_deposit = {
+	is_variable_set = rss_potential_d_trade_value
+}
+
+rss_has_potential_mining_deposit = {
+	OR = {
+		is_variable_set = rss_potential_d_minerals
+		is_variable_set = rss_potential_d_energy
+		is_variable_set = rss_potential_d_alloys
+		is_variable_set = rss_potential_d_volatile_motes
+		is_variable_set = rss_potential_d_rare_crystals
+		is_variable_set = rss_potential_d_exotic_gases
+	}
+}
+
+rss_has_potential_research_deposit = {
+	OR = {
+		is_variable_set = rss_potential_d_zro
+		is_variable_set = rss_potential_d_dark_matter
+		is_variable_set = rss_potential_d_physics
+		is_variable_set = rss_potential_d_society
+		is_variable_set = rss_potential_d_engineering
+	}
+}
+
+rss_has_trade_deposits = {
+	OR = {
+		has_deposit = d_trade_value_1
+		has_deposit = d_trade_value_2
+		has_deposit = d_trade_value_3
+		has_deposit = d_trade_value_4
+		has_deposit = d_trade_value_5
+		has_deposit = d_trade_value_6
+		has_deposit = d_trade_value_7
+		has_deposit = d_trade_value_8
+		has_deposit = d_trade_value_9
+		has_deposit = d_trade_value_10
+	}
+}
+
+rss_has_mining_deposit = {
+	has_deposit_for = shipclass_mining_station
+}
+
+rss_has_research_deposit = {
+	has_deposit_for = shipclass_research_station
+}

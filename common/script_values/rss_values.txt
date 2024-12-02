@@ -1,0 +1,4 @@
+rss_available_numof_potential_deposits = {
+	add = trigger:planet_size
+	subtract = This.rss_numof_d_all
+} 

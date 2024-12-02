@@ -1,0 +1,2 @@
+# rss/start_if inline script
+if= { limit = { always=no } log="" }
